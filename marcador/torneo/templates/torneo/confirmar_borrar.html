@@ -1,0 +1,10 @@
+{% extends "torneo/base.html" %}
+{% block content %}
+<h1>Borrar partido</h1>
+<p>¿Seguro que quieres borrar "{{ object }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sí, borrar</button>
+  <a href="{% url 'partido_detail' object.pk %}">Cancelar</a>
+</form>
+{% endblock %}

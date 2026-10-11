@@ -1,0 +1,16 @@
+{% extends "torneo/base.html" %}
+{% block title %}Detalle{% endblock %}
+{% block content %}
+<h1>{{ partido.local }} vs {{ partido.visita }}</h1>
+<p>Liga: {{ partido.liga }}<br>Fecha: {{ partido.fecha|date:"d/m/Y H:i" }}<br>
+Estadio: {{ partido.estadio }}<br>Marcador: {{ partido.goles_local }} - {{ partido.goles_visita }}<br>
+Estado: {{ partido.get_estado_display }}</p>
+{% if rol_usuario == "administrador" %}
+  <a href="{% url 'partido_update' partido.pk %}">Editar</a> ·
+  <a href="{% url 'partido_delete' partido.pk %}">Borrar</a> ·
+{% endif %}
+{% if rol_usuario == "administrador" or rol_usuario == "planillero" %}
+  <a href="{% url 'partido_marcador' partido.pk %}">Actualizar marcador</a> ·
+{% endif %}
+<a href="{% url 'partido_list' %}">Volver</a>
+{% endblock %}

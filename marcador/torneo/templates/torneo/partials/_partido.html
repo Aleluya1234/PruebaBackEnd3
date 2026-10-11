@@ -1,0 +1,8 @@
+<div class="card">
+  <strong>{{ partido.local }} {{ partido.goles_local }} - {{ partido.goles_visita }} {{ partido.visita }}</strong><br>
+  <small>{{ partido.liga }} · {{ partido.fecha|date:"d/m/Y H:i" }} · {{ partido.get_estado_display }}</small><br>
+  <a href="{% url 'partido_detail' partido.pk %}">Detalle</a>
+  {% if rol_usuario == "administrador" or rol_usuario == "planillero" %}
+    · <a href="{% url 'partido_marcador' partido.pk %}">Marcador</a>
+  {% endif %}
+</div>

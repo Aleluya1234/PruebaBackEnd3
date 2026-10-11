@@ -1,0 +1,9 @@
+{% extends "torneo/base.html" %}
+{% block content %}
+<h1>Marcador: {{ partido.local }} vs {{ partido.visita }}</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Actualizar marcador</button>
+</form>
+{% endblock %}

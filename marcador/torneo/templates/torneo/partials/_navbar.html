@@ -1,0 +1,14 @@
+<nav>
+  <a href="{% url 'partido_list' %}">Partidos</a>
+  {% if rol_usuario == "administrador" %}<a href="{% url 'partido_create' %}">Nuevo partido</a>{% endif %}
+  <span style="margin-left:auto">
+  {% if user.is_authenticated %}
+    {{ user.username }} · rol: {{ rol_usuario }}
+    <form method="post" action="{% url 'logout' %}" style="display:inline">
+      {% csrf_token %}<button type="submit">Salir</button>
+    </form>
+  {% else %}
+    <a href="{% url 'login' %}">Ingresar</a>
+  {% endif %}
+  </span>
+</nav>

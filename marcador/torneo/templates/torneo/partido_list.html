@@ -1,0 +1,10 @@
+{% extends "torneo/base.html" %}
+{% block title %}Partidos{% endblock %}
+{% block content %}
+<h1>Partidos</h1>
+{% for partido in partidos %}
+  {% include "torneo/partials/_partido.html" %}
+{% empty %}
+  <p>No hay partidos.</p>
+{% endfor %}
+{% endblock %}
