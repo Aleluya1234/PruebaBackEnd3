@@ -5,4 +5,4 @@
 //   - VS Code: clic derecho en index.html > "Open with Live Server", o
 //   - en esta carpeta:  python -m http.server 5500   y entra a http://127.0.0.1:5500
 // Ese origen debe estar en CORS_ALLOWED_ORIGINS del settings.py de tu proyecto.
-window.API_URL = "http://127.0.0.1:8000/api";
+window.API_URL = "https://shiny-guide-jjgwp55jwpvv257xj-8000.app.github.dev/api";
