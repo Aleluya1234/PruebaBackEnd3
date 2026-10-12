@@ -42,6 +42,12 @@ class Partido(models.Model):
     goles_visita = models.PositiveIntegerField(default=0)
     estado = models.CharField(max_length=12, choices=ESTADOS, default="programado")
 
+    def __str__(self):
+        fecha = f"{self.fecha:%d/%m/%Y}" if self.fecha else "sin fecha"
+        local = str(self.local) if self.local_id else "?"
+        visita = str(self.visita) if self.visita_id else "?"
+        return f"{local} vs {visita} ({fecha})"
+
     class Meta:
         ordering = ["fecha", "id"]
 
@@ -54,3 +60,4 @@ class Partido(models.Model):
 
     def __str__(self):
         return f"{self.local} vs {self.visita} ({self.fecha:%d/%m/%Y})"
+    

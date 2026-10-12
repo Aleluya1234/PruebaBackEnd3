@@ -16,7 +16,8 @@ class RolPermiso(BasePermission):
         rol = rol_de(request.user)
         if rol == "administrador":
             return True
-        if rol == "planillero":
-            if request.method == "PATCH" and getattr(view, "basename", "") == "partido":
-                return set(request.data.keys()) <= CAMPOS_MARCADOR
+        if (rol == "planillero" and request.method == "PATCH"
+                and getattr(view, "basename", "") == "partido"):
+            datos = request.data
+            return hasattr(datos, "keys") and set(datos.keys()) <= CAMPOS_MARCADOR
         return False                          # 403
