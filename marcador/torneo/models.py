@@ -58,6 +58,3 @@ class Partido(models.Model):
             if self.liga_id and (self.local.liga_id != self.liga_id or self.visita.liga_id != self.liga_id):
                 raise ValidationError("Local y visita deben pertenecer a la liga del partido.")
 
-    def __str__(self):
-        return f"{self.local} vs {self.visita} ({self.fecha:%d/%m/%Y})"
-    
