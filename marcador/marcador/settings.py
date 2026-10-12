@@ -106,4 +106,10 @@ CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:5500", "http://localhost:5500"]
 _extra = os.environ.get("DJANGO_CORS_EXTRA", "")   # origen del front en Codespaces
 CORS_ALLOWED_ORIGINS += [o for o in _extra.split(",") if o]
 
-CSRF_TRUSTED_ORIGINS = ["https://*.app.github.dev"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.app.github.dev",
+    "https://localhost:8000",
+    "http://localhost:8000",
+    "https://127.0.0.1:8000",
+    "http://127.0.0.1:8000",
+]
