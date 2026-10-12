@@ -105,6 +105,11 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:5500", "http://localhost:5500"]
 _extra = os.environ.get("DJANGO_CORS_EXTRA", "")   # origen del front en Codespaces
 CORS_ALLOWED_ORIGINS += [o for o in _extra.split(",") if o]
+# En Codespaces, permite automáticamente el origen del front (puerto 5500)
+_cs = os.environ.get("CODESPACE_NAME")
+if _cs:
+    _dominio = os.environ.get("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN", "app.github.dev")
+    CORS_ALLOWED_ORIGINS.append(f"https://{_cs}-5500.{_dominio}")
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.app.github.dev",
